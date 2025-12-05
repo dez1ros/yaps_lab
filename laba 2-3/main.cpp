@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// new 
 void inputData(float* p, int n);
 float average(const float* p, int n);
 float minValue(const float* p, int n);
