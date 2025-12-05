@@ -26,13 +26,13 @@ int main() {
 
     float** data = new float*[days];
     for (int i = 0; i < days; i++) {
-        data[i] = new float[h];
+        *(data + i) = new float[h];
     }
 
     for (int i = 0; i < days; i++) {
         cout << "День " << i + 1 << ": ";
         for (int j = 0; j < h; j++) {
-            cin >> *(data[i] + j);
+            cin >> *(*(data + i) + j);
         }
     }   
 
@@ -68,7 +68,7 @@ void showHotDays(float** p, int d, int h){
     float overallAvg = overallAverage(p, d, h);
     cout << "Дни с температурой выше общей средней (" << overallAvg << "):\n";
     for (int i = 0; i < d; i++) {
-        float dayAvg = dayAverage(p[i], h);
+        float dayAvg = dayAverage(*(p + i), h);
         if (dayAvg > overallAvg) {
             cout << "День " << i + 1 << " со средней температурой " << dayAvg << endl;
         }
